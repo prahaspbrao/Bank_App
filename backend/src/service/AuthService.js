@@ -4,6 +4,16 @@ class AuthService{
             msg : "Login Route"
         }
     }
+
+    static registerUser(body){
+        const {name , email } = body;
+
+        
+
+        return {
+            name , email 
+        }
+    }
 }
 
 module.exports = AuthService
