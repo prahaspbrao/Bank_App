@@ -1,15 +1,26 @@
-const AuthService = require("../service/AuthService")
+const AuthService = require("../service/AuthService");
 
-class AuthController{
-    static async loginUser(req , res){
-        const res_obj = await AuthService.loginUser(req.body);
-        res.status(200).send(res_obj);
-    }
+class AuthController {
 
-    static async registerUser(req , res ){
-        const res_obj = await AuthService.registerUser(req.body);
-        res.status(201).send(res_obj);
+  static async loginUser(req, res, next) {
+    try {
+      const result = await AuthService.loginUser(req.body);
+
+      res.status(200).json(result);
+
+    } catch (error) {
+      next(error);
     }
+  }
+
+  static async registerUser(req, res, next) {
+  try {
+    const result = await AuthService.registerUser(req.body);
+    res.status(201).json(result);
+  } catch (error) {
+    next(error);
+  }
+}
 }
 
-module.exports = AuthController
+module.exports = AuthController;
