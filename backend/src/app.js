@@ -3,8 +3,10 @@ const app = express();
 
 const NotFoundError = require("./middlewares/404handling.js");
 const ApiError = require("./utils/ApiError.js");
+const morgan =  require("morgan")
 
 app.use(express.json());
+app.use(morgan("dev"))
 
 // routes
 app.use("/api/v1", require("./router"));
