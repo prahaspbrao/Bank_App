@@ -4,9 +4,11 @@ const app = express();
 const NotFoundError = require("./middlewares/404handling.js");
 const ApiError = require("./utils/ApiError.js");
 const morgan =  require("morgan")
+const cors = require("cors")
 
 app.use(express.json());
 app.use(morgan("dev"))
+app.use(cors())
 
 // routes
 app.use("/api/v1", require("./router"));
